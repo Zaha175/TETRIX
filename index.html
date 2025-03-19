@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Retro Tetris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #5D5CDE;
@@ -62,6 +63,9 @@
             margin: 1rem;
             gap: 2rem;
             flex-wrap: wrap;
+            /* Ensure container does not overflow vertically in smaller screens */
+            max-height: 100vh;
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
         }
 
         .game-area {
@@ -101,6 +105,10 @@
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
+            /* Limit the height of the side panel and allow scrolling */
+            max-height: calc(100vh - 2rem); /* Subtract margin from container */
+            overflow-y: auto;
+            padding-bottom: 1rem; /* Add some padding at the bottom for better scroll */
         }
 
         .stats-container, .next-container, .hold-container {
@@ -359,6 +367,9 @@
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 1rem;
+                max-height: none; /* Remove max-height for mobile */
+                overflow-y: visible;
+                padding-bottom: 0;
             }
 
             .mobile-controls {
@@ -912,7 +923,7 @@
                 [0, -1], // Up
                 [-1, -1], // Up-Left
                 [1, -1],  // Up-Right
-                [0, 2],   // 2 Down (for I piece)
+                [0, 2],    // 2 Down (for I piece)
                 [-2, 0],  // 2 Left (for I piece)
                 [2, 0]    // 2 Right (for I piece)
             ];
